@@ -222,7 +222,6 @@ void dijkstra(const vector<Edge> graph[],int s){
     }
 
 }
-
 void solve_search(){
 
     /*
@@ -235,6 +234,16 @@ void solve_search(){
     result.clear();
     prim(graph,vertexes,max_vertexnum);
 
+}
+void branchAndBound(){
+    /*use branch And Bound to solve this problem
+     * just similar to  tsp
+     * the shortest path between two vertexes in the must include set
+     * is the path that exclude any other vertexes which is in the
+     * must include set.
+     * this algorithm based on the constraints in a given node,
+     * a lower bound is formulated for the given node
+     * construction of solution tree*/
 }
 void search_route(char *topo[5000], int edge_num, char *demand) {
     /*unsigned short result[] = {2, 6, 3};//示例中的一个解
