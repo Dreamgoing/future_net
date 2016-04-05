@@ -12,14 +12,17 @@
 #include <map>
 #include <__hash_table>
 using namespace std;
-#define DEBUG_SHOW_PATH
+//#define DEBUG_SHOW_PATH
 //#define DEBUG_SHOW_STFN
 //#define DEBUG_SHOW_DIST
+//#define SHORTEST_PATH_UNION
+//#define SHOW_FINAL_PATH
+//#define SHOW_LAST_PATH
 //你要完成的功能总入口
 const int max_n = 660;
 
 int max_vertexnum = 0;
-const int inf = 0x3f3f3f3f;
+const int inf = 0x1f1f1f1f;
 struct Edge{
     int to,num,cost;
     Edge(){}
@@ -33,6 +36,7 @@ struct Edge{
     }
 };
 vector<Edge> graph[max_n];
+map<int,int> edgeVal;
 int mapp[max_n][max_n];
 int dist[max_n][max_n];
 vector<int> vertexes;
@@ -40,6 +44,8 @@ vector<int> result;
 pair<int,int> stfn;
 bool visit[max_n];
 vector<int> resPath;
+vector<int> resCost;
+vector<int> finalPath;
 struct pairHash{
     template <typename T1,typename T2>
             size_t operator()(const std::pair<T1,T2> &pr)const {
@@ -53,9 +59,11 @@ void printPath(const pair<int,int> p);
 void solve_input_topo(char *topo[5000],int edge_num){
     /*
      * solve the case that there are more than two edge between two vertexes*/
+    edgeVal.clear();
     memset(mapp,inf, sizeof(mapp));
     memset(dist,inf, sizeof(dist));
     hashPath.clear();
+    finalPath.clear();
     path.clear();
     int tmp[4];
     for(int i = 0;i<max_n;i++){
@@ -78,11 +86,14 @@ void solve_input_topo(char *topo[5000],int edge_num){
 
 
         path[make_pair(tmp[1],tmp[2])].push_back(tmp[0]);
+        edgeVal[tmp[0]] = tmp[3];
         hashPath[make_pair(tmp[1],tmp[2])] = tmp[0];
 #ifdef DEBUG_SHOW_PATH
 
        // cout<<path[make_pair(tmp[1],tmp[2])].size()<<" size"<<endl;
+        cout<<tmp[3]<<" ";
         printPath(make_pair(tmp[1],tmp[2]));
+
         //cout<<"vector  "<<path[make_pair(tmp[1],tmp[2])][0]<<" "<<endl;
        // cout<<tmp[0]<<"--> num"<<endl;
 #endif
@@ -153,50 +164,16 @@ void printPath(const pair<int,int> p) {
 
 void unionPath(const pair<int,int> a,const pair<int,int> b){
     pair<int,int> res = make_pair(a.first,b.second);
-    path[res].reserve(path[a].size()+path[b].size());
+    path[res].resize(path[a].size()+path[b].size());
     path[res].assign(path[a].begin(),path[a].end());
     //printPath(res);
     path[res].insert(path[res].end(),path[b].begin(),path[b].end());
     //printPath(res);
 }
 //find the shortest path in set vs obtain source vertex
-void prim(const vector<Edge>graph[],vector<int> vs,int n){
-    path.clear();
-    for(int i = 0;i<n;i++){
-       dist[i][i] = 0;
-    }
-    for(int k = 0;k<n;k++){
-        if(k==stfn.first||k==stfn.second){
-            continue;
-        }
-        for(int i = 0;i<vs.size();i++){
-            if(vs[i]==stfn.second){
-                continue;
-            }
-            for(int j = 0;j<vs.size();j++){
-                int from = vs[i];
-                int to = vs[j];
-                if(dist[from][k]+dist[k][to]<dist[from][to]){
-                    dist[from][to] = dist[from][k]+dist[k][to];
-                    //path<make_pair<i,j>,vector<int> > = path<make_pair<i,k>,vector<int> > + path<make_pair<i,k>, vector<int> >
-                    //if the sourceID and the destinationID in the path of i and j solve it
-                    /*
-                     * coding
-                     * */
-                    unionPath(make_pair(from,k),make_pair(k,to));
-                  //  printPath(make_pair(from,to));
-
-                }
-            }
-        }
-    }
 
 
-
-}
-
-void shortest_path(const vector<Edge>graph[],vector<int> vs,int n)
-{
+void shortest_path(const vector<Edge>graph[],vector<int> vs,int n) {
   //  path.clear();
     for(int i = 0;i<n;i++){
         dist[i][i] = 0;
@@ -207,18 +184,18 @@ void shortest_path(const vector<Edge>graph[],vector<int> vs,int n)
     for(vector<int>::iterator it = vs.begin();it!=vs.end();++it){
         isVs[*it] = true;
     }
-    cout<<isVs[stfn.first]<<" "<<isVs[stfn.second]<<endl;
+    //cout<<isVs[stfn.first]<<" "<<isVs[stfn.second]<<endl;
     for(int k = 0;k<n;k++){
-        if(k==stfn.first||k==stfn.second||!isVs[k]){
+        if(k==stfn.first||k==stfn.second||isVs[k]){
             continue;
         }
-        for(int i = 0;i<vs.size();i++){
-            for(int j = 0;j<vs.size();j++){
-                if(vs[j] == stfn.first){
+        for(int i = 0;i<n;i++){
+            for(int j = 0;j<n;j++){
+                if(j == stfn.first){
                     continue;
                 }
-                int from = vs[i];
-                int to = vs[j];
+                int from = i;
+                int to = j;
                 if(dist[from][k]+dist[k][to]<dist[from][to]){
                     dist[from][to] = dist[from][k]+dist[k][to];
                     //path<make_pair<i,j>,vector<int> > = path<make_pair<i,k>,vector<int> > + path<make_pair<i,k>, vector<int> >
@@ -226,9 +203,16 @@ void shortest_path(const vector<Edge>graph[],vector<int> vs,int n)
                     /*
                      * coding
                      * */
+#ifdef SHORTEST_PATH_UNION
+                    cout<<'\n'<<"____________"<<endl;
+                    cout<<dist[from][k]<<" (cost) ";
+                    printPath(make_pair(from,k));
+                    cout<<dist[k][to]<<" (cost) ";
+                    printPath(make_pair(k,to));
+                    cout<<dist[from][to]<<" (cost) ";
+                    printPath(make_pair(from,to));
+#endif
                     unionPath(make_pair(from,k),make_pair(k,to));
-                    //printPath(make_pair(from,to));
-
                 }
             }
         }
@@ -236,37 +220,65 @@ void shortest_path(const vector<Edge>graph[],vector<int> vs,int n)
 
 }
 int mincost = inf;
-
+void showVertex(vector<int> s){
+    cout<<"the Vertex in the Vs"<<endl;
+    for(int i = 0;i<s.size();i++){
+        cout<<s[i]<<" ";
+    }
+    cout<<'\n';
+}
 void printVector(vector<int> s);
+//int cnt_ans = 0;
 void dfs(int s,int cost,int num){
+
     if(num == vertexes.size()){
         if(dist[s][stfn.second]<inf&&cost+dist[s][stfn.second]<mincost){
+#ifdef SHOW_LAST_PATH
+            cout<<s<<"->"<<stfn.second<<endl;
+            printPath(make_pair(s,stfn.second));
+#endif
+            mincost = cost + dist[s][stfn.second];
+            resPath.insert(resPath.end(),path[make_pair(s,stfn.second)].begin(),path[make_pair(s,stfn.second)].end());
+            finalPath.assign(resPath.begin(),resPath.end());
+#ifdef SHOW_FINAL_PATH
 
-            resPath.push_back(hashPath[make_pair(s,stfn.second)]);
+            int cost_tmp = 0;
             cout<<"______________________________________"<<endl;
             cout<<"cost "<<cost+dist[s][stfn.second]<<endl;
 
-            mincost = cost + dist[s][stfn.second];
             for(int i = 0;i<resPath.size();i++){
-                cout<<resPath[i]<<" ";
+                cout<<resPath[i]<<" "<<"("<<resCost[i]<<" "<<" || "<<edgeVal[resPath[i]]<<")  -> ";
+                cost_tmp+=edgeVal[resPath[i]];
+
             }
+            cout<<"cost_tmp = "<<cost_tmp<<endl;
             cout<<'\n';
-            resPath.pop_back();
+
+#endif
+            for(int i = 0;i<path[make_pair(s,stfn.second)].size();i++){
+                resPath.pop_back();
+            }
+
+
         }
+
         return;
     } else{
         for(vector<int>::iterator it = vertexes.begin();it!=vertexes.end();++it){
             if(!visit[*it]){
                 if(dist[s][*it]<inf){
                     visit[*it] = true;
-                    cost += dist[s][*it];
                     resPath.insert(resPath.end(),path[make_pair(s,*it)].begin(),path[make_pair(s,*it)].end());
-                    printVector(resPath);
-                    dfs(*it,cost,num+1);
+//                    printVector(resPath);
+                    resCost.push_back(dist[s][*it]);
+                  //  cout<<"num = "<<num<<" maxnum = "<<max_vertexnum<<endl;
+                   // cout<<s<<"-> "<<*it<<" ";
+                    dfs(*it,cost+dist[s][*it],num+1);
+                   // cout<<'\n';
+                    resCost.pop_back();
                     for(int i = 0;i<path[make_pair(s,*it)].size();i++){
                         resPath.pop_back();
                     }
-                    cost -= dist[s][*it];
                     visit[*it] = false;
                 }
             }
@@ -308,6 +320,7 @@ void dijkstra(const vector<Edge> graph[],int s){
     }
 
 }
+void showPair(vector<int> vs);
 void solve_search(){
 
     /*
@@ -320,9 +333,18 @@ void solve_search(){
     result.clear();
     //prim(graph,vertexes,max_vertexnum);
     resPath.clear();
+    resCost.clear();
     shortest_path(graph,vertexes,max_vertexnum);
+
     memset(visit,0,sizeof(visit));
     dfs(stfn.first,0,0);
+//    for(int i = 0;i<vertexes.size();i++){
+//        cout<<vertexes[i]<<" ";
+//    }
+  //  showPair(vertexes);
+    for(int i = 0;i<finalPath.size();i++){
+        record_result(finalPath[i]);
+    }
 
 }
 void branchAndBound(){
@@ -339,8 +361,16 @@ void test(){
     unionPath(make_pair(2,3),make_pair(3,1));
     printPath(make_pair(2,1));
 }
-
-
+void showPair(vector<int> vs){
+    vs.push_back(stfn.first);
+    for(int i = 0;i<vs.size();i++){
+        for(int j = 0;j<vs.size();j++){
+            if(vs[i]!=vs[j]){
+                printPath(make_pair(vs[i],vs[j]));
+            }
+        }
+    }
+}
 void printVector(vector<int> s) {
     for(vector<int>::iterator it = s.begin();it!=s.end();++it){
         cout<<*it<<" -> ";
@@ -354,8 +384,9 @@ void search_route(char *topo[5000], int edge_num, char *demand) {
         record_result(result[i]);*/
     solve_input_topo(topo,edge_num);
     solve_input_demand(demand);
-    //printMap(max_vertexnum);
+    //showVertex(vertexes);
     solve_search();
+   // printPath(make_pair(31,1));
     //test();
 
 
