@@ -11,15 +11,9 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ebaa3d89-eb29-4f8d-bfda-9fed42370876" name="Default" comment="finding shortest path has a  little bug.">
+    <list default="true" id="ebaa3d89-eb29-4f8d-bfda-9fed42370876" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Debug/future_net" afterPath="$PROJECT_DIR$/Debug/future_net" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/future_net.iml" afterPath="$PROJECT_DIR$/.idea/future_net.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Debug/demand.csv" afterPath="$PROJECT_DIR$/Debug/demand.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Debug/result.csv" afterPath="$PROJECT_DIR$/Debug/result.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Debug/sample_result.csv" afterPath="$PROJECT_DIR$/Debug/sample_result.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Debug/topo.csv" afterPath="$PROJECT_DIR$/Debug/topo.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/route.cpp" afterPath="$PROJECT_DIR$/route.cpp" />
     </list>
     <list id="ccb63745-644c-405b-9dcc-db3053cf2971" name="Rejected commit: Default" comment="dfs search &#10;it seem that there still a little bug" />
     <ignored path="future_net.iws" />
@@ -41,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="future_net.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="future_net.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/future_net.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82758623">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -53,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="route.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="route.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/route.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="361" column="25" selection-start-line="361" selection-start-column="25" selection-end-line="361" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.020689655">
+              <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
               <folding>
                 <element signature="e#980#1192#1" expanded="false" />
                 <element signature="e#1010#1035#0" expanded="true" />
@@ -226,6 +220,13 @@
       <option name="number" value="Default" />
       <updated>1457882851375</updated>
     </task>
+    <task id="LOCAL-00001" summary="simple example is just ok">
+      <created>1459825153376</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1459825153376</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -266,7 +267,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dfs search &#10;it seem that there still a little bug" />
     <MESSAGE value="finding shortest path has a  little bug." />
-    <option name="LAST_COMMIT_MESSAGE" value="finding shortest path has a  little bug." />
+    <MESSAGE value="simple example is just ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="simple example is just ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -275,6 +277,165 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/future_net.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#980#1192#1" expanded="false" />
+            <element signature="e#1010#1035#0" expanded="true" />
+            <element signature="e#1365#2919#0" expanded="false" />
+            <element signature="e#2314#2564#0" expanded="true" />
+            <element signature="e#2920#3669#0" expanded="false" />
+            <element signature="e#3487#3660#0" expanded="true" />
+            <element signature="e#3670#3824#0" expanded="false" />
+            <element signature="e#3866#4102#0" expanded="false" />
+            <element signature="e#4497#6148#0" expanded="false" />
+            <element signature="e#5684#6024#0" expanded="true" />
+            <element signature="e#6357#8384#0" expanded="false" />
+            <element signature="e#6550#6632#0" expanded="true" />
+            <element signature="e#6907#7335#0" expanded="true" />
+            <element signature="e#8385#9681#0" expanded="false" />
+            <element signature="e#9713#10520#0" expanded="false" />
+            <element signature="e#10521#10941#0" expanded="false" />
+            <element signature="e#11034#11283#0" expanded="false" />
+            <element signature="e#11434#11788#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/其他思路">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/future_net.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#980#1192#1" expanded="false" />
+            <element signature="e#1010#1035#0" expanded="true" />
+            <element signature="e#1365#2919#0" expanded="false" />
+            <element signature="e#2314#2564#0" expanded="true" />
+            <element signature="e#2920#3669#0" expanded="false" />
+            <element signature="e#3487#3660#0" expanded="true" />
+            <element signature="e#3670#3824#0" expanded="false" />
+            <element signature="e#3866#4102#0" expanded="false" />
+            <element signature="e#4497#6148#0" expanded="false" />
+            <element signature="e#5684#6024#0" expanded="true" />
+            <element signature="e#6357#8384#0" expanded="false" />
+            <element signature="e#6550#6632#0" expanded="true" />
+            <element signature="e#6907#7335#0" expanded="true" />
+            <element signature="e#8385#9681#0" expanded="false" />
+            <element signature="e#9713#10520#0" expanded="false" />
+            <element signature="e#10521#10941#0" expanded="false" />
+            <element signature="e#11034#11283#0" expanded="false" />
+            <element signature="e#11434#11788#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/其他思路">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/future_net.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="361" column="25" selection-start-line="361" selection-start-column="25" selection-end-line="361" selection-end-column="25" />
+          <folding>
+            <element signature="e#980#1192#1" expanded="false" />
+            <element signature="e#1010#1035#0" expanded="true" />
+            <element signature="e#1365#2919#0" expanded="false" />
+            <element signature="e#2314#2564#0" expanded="true" />
+            <element signature="e#2920#3669#0" expanded="false" />
+            <element signature="e#3487#3660#0" expanded="true" />
+            <element signature="e#3670#3824#0" expanded="false" />
+            <element signature="e#3866#4102#0" expanded="false" />
+            <element signature="e#4497#6148#0" expanded="false" />
+            <element signature="e#5684#6024#0" expanded="true" />
+            <element signature="e#6357#8384#0" expanded="false" />
+            <element signature="e#6550#6632#0" expanded="true" />
+            <element signature="e#6907#7335#0" expanded="true" />
+            <element signature="e#8385#9681#0" expanded="false" />
+            <element signature="e#9713#10520#0" expanded="false" />
+            <element signature="e#10521#10941#0" expanded="false" />
+            <element signature="e#11034#11283#0" expanded="false" />
+            <element signature="e#11434#11788#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/其他思路">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/future_net.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -745,10 +906,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/route.cpp">
+    <entry file="file://$PROJECT_DIR$/future_net.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="361" column="25" selection-start-line="361" selection-start-column="25" selection-end-line="361" selection-end-column="25" />
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020689655">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
           <folding>
             <element signature="e#980#1192#1" expanded="false" />
             <element signature="e#1010#1035#0" expanded="true" />
@@ -768,16 +939,6 @@
             <element signature="e#10521#10941#0" expanded="false" />
             <element signature="e#11034#11283#0" expanded="false" />
             <element signature="e#11434#11788#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/future_net.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82758623">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
